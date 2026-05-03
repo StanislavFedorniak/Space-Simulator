@@ -1,0 +1,505 @@
+.App {
+  text-align: center;
+}
+
+nav {
+  background-color: #1a1a2e;
+  padding: 1rem;
+  margin-bottom: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
+}
+
+nav li {
+  margin: 0;
+}
+
+nav a {
+  color: #eee;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+nav a:hover {
+  background-color: #16213e;
+  color: #fff;
+}
+
+nav a.active {
+  background-color: #0f3460;
+  color: #fff;
+}
+
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Mission component styles */
+.mission-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: flex-end;
+  margin-bottom: 1.5rem;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.filter-label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.loading-message,
+.error-message,
+.no-missions-message {
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto 25px auto;
+  opacity: 0.9;
+}
+
+.error-message {
+  color: #e74c3c;
+}
+
+.mission-tasks {
+  margin-top: 1rem;
+}
+
+.mission-tasks ul {
+  margin: 0.5rem 0 0 0;
+  padding-left: 1.5rem;
+}
+
+.mission-tasks li {
+  margin-bottom: 0.25rem;
+}
+
+.mission-header {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  align-items: flex-start;
+}
+
+.mission-image {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.mission-info {
+  flex: 1;
+}
+
+.mission-info h3 {
+  margin: 0 0 0.5rem 0;
+  color: #0f3460;
+}
+
+.mission-info p {
+  margin: 0.25rem 0;
+}
+
+.mission-crew {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #ddd;
+}
+
+.mission-crew p {
+  margin: 0.25rem 0;
+}
+
+.crew-button {
+  background-color: #0f3460;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+  transition: background-color 0.3s ease;
+}
+
+.crew-button:hover:not(:disabled) {
+  background-color: #16213e;
+}
+
+.crew-button:disabled {
+  background-color: #666;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+/* Crew management styles */
+.crew-form-container {
+  background-color: #2b113d;
+  border: 1px solid #4a1c68;
+  border-radius: 12px;
+  padding: 25px 30px;
+  margin: 25px auto;
+  max-width: 900px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.crew-form-container h3 {
+  color: rgb(131, 244, 244);
+  margin-top: 0;
+  border-bottom: 1px dashed #4a1c68;
+  padding-bottom: 10px;
+}
+
+.candidates-section {
+  margin-bottom: 20px;
+}
+
+.candidates-section h4 {
+  color: #ff9d00;
+  margin-bottom: 10px;
+}
+
+.candidates-list {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.candidate-item {
+  cursor: pointer;
+  color: rgb(149, 225, 180);
+  text-decoration: underline;
+  padding: 5px 10px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.candidate-item:hover {
+  color: white;
+  text-shadow: 0 0 10px #d02a1e;
+  background-color: rgba(255, 157, 0, 0.1);
+}
+
+.crew-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.form-group label {
+  font-weight: bold;
+  color: #ff9d00;
+}
+
+.form-group input {
+  padding: 8px 12px;
+  border: 1px solid #4a1c68;
+  border-radius: 4px;
+  background-color: #1a0823;
+  color: azure;
+  font-size: 14px;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: rgb(131, 244, 244);
+  box-shadow: 0 0 5px rgba(131, 244, 244, 0.3);
+}
+
+.submit-btn {
+  background-color: #0f3460;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+  background-color: #16213e;
+}
+
+.form-message {
+  margin-top: 10px;
+  font-weight: bold;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.form-message.error {
+  color: red;
+  background-color: rgba(255, 0, 0, 0.1);
+  border: 1px solid red;
+}
+
+.form-message.success {
+  color: green;
+  background-color: rgba(0, 255, 0, 0.1);
+  border: 1px solid green;
+}
+
+.crew-members {
+  margin-top: 10px;
+}
+
+.crew-members ul {
+  margin: 5px 0 0 0;
+  padding-left: 20px;
+}
+
+.crew-members li {
+  margin-bottom: 5px;
+  color: azure;
+}
+
+/* Authentication styles */
+.auth {
+  max-width: 400px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: #1a1a2e;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.auth h2 {
+  color: #eee;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group label {
+  color: #bbb;
+  font-weight: 500;
+  text-align: left;
+}
+
+.form-group input {
+  padding: 0.75rem;
+  border: 1px solid #444;
+  border-radius: 4px;
+  background-color: #2a2a3e;
+  color: #eee;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #0f3460;
+  box-shadow: 0 0 0 2px rgba(15, 52, 96, 0.2);
+}
+
+.form-group input:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.error-message {
+  color: #ff6b6b;
+  background-color: rgba(255, 107, 107, 0.1);
+  border: 1px solid #ff6b6b;
+  padding: 0.75rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.auth-button {
+  padding: 0.75rem 1.5rem;
+  background-color: #0f3460;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 0.5rem;
+}
+
+.auth-button:hover:not(:disabled) {
+  background-color: #1a4d80;
+}
+
+.auth-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.logout-button {
+  padding: 0.5rem 1rem;
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.logout-button:hover {
+  background-color: #c82333;
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-size: 1.2rem;
+  color: #eee;
+  background-color: #0f0f1e;
+}
+
+/* Ship component styles */
+.ship-config-form {
+  max-width: 400px;
+  margin: 2rem auto 0;
+  padding: 1.5rem;
+  background-color: #1a1a2e;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.ship-config-form h3 {
+  color: #eee;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.ship-config-form .form-group {
+  margin-bottom: 1rem;
+}
+
+.ship-config-form label {
+  display: block;
+  color: #bbb;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.ship-config-form input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #444;
+  border-radius: 4px;
+  background-color: #2a2a3e;
+  color: #eee;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.ship-config-form input:focus {
+  outline: none;
+  border-color: #0f3460;
+  box-shadow: 0 0 0 2px rgba(15, 52, 96, 0.2);
+}
+
+.save-ship-button {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: #0f3460;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 1rem;
+}
+
+.save-ship-button:hover:not(:disabled) {
+  background-color: #1a4d80;
+}
+
+.save-ship-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.save-message {
+  margin-top: 1rem;
+  padding: 0.75rem;
+  border-radius: 4px;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.save-message.success {
+  background-color: rgba(40, 167, 69, 0.1);
+  border: 1px solid #28a745;
+  color: #28a745;
+}
+
+.save-message.error {
+  background-color: rgba(220, 53, 69, 0.1);
+  border: 1px solid #dc3545;
+  color: #dc3545;
+}
+
+/* Auth footer styles */
+.auth-footer {
+  text-align: center;
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid #444;
+  color: #bbb;
+  font-size: 0.9rem;
+}
+
+.auth-link {
+  color: #0f3460;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.auth-link:hover {
+  color: #1a4d80;
+  text-decoration: underline;
+}

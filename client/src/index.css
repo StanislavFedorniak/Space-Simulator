@@ -1,0 +1,202 @@
+html {
+  scroll-behavior: smooth;
+}
+
+header {
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-align: center;
+  padding-top: 0px;
+}
+
+header h1 {
+  background-color: rgb(13, 36, 147);
+  margin: 0px;
+  padding: 5px;
+}
+
+header ul {
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  /* прибирає крапки у списку */
+  list-style-type: none;
+  gap: 40px;
+  padding: 0px;
+  margin-top: 20px;
+}
+
+header a {
+  /* прибирає підкреслення навігації */
+  text-decoration: none;
+  color: rgb(131, 244, 244);
+}
+
+header a:hover {
+  color: white;
+  text-shadow: 0 0 10px #00d4ff;
+}
+
+body {
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #1a0823;
+  color:azure;
+  margin: 0px;
+  padding: 15px;
+}
+
+.photo-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 25px;
+}
+
+footer {
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.ship-stats-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 20px;
+  padding: 40px 20px;
+  max-width: 1000px;
+  margin: 0 auto 30px auto;
+  background-color:rgb(61, 15, 104);
+  /* Заокруглені кути */
+  border-radius: 15px;
+}
+
+.stat-item {
+  background-color:ghostwhite;
+  padding: 50px;
+  max-width: 250px;
+  min-width: 50px;
+  text-align: center;
+  color:rgb(212, 99, 6);
+  border-radius: 10px;
+  flex: 1; /* Картки розтягуватимуться рівномірно */
+}
+
+.mission, .trip {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 900px;
+  margin-bottom: 25px;
+  /* Перше значення - верх і низ, а друге значення - ліво і право */
+  padding: 25px 30px;
+  border-radius: 12px; /* Заокруглені кути */
+  background-color: #2b113d;
+  border: 1px solid #4a1c68;
+}
+
+.mission h3, .trip h3 {
+  color: rgb(131, 244, 244);
+  margin-top: 0;
+  border-bottom: 1px dashed #4a1c68;
+  padding-bottom: 10px;
+}
+
+.mission strong, .trip strong {
+  color: #ff9d00;
+}
+
+footer {
+  text-align: center;
+  margin-top: 50px;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px; /* Для заокруглення кутів фото */
+}
+
+@media (max-width: 768px) {
+  .ship-stats-container {
+      margin-left: 20px; 
+      margin-right: 20px;
+      gap: 20px;
+      padding: 20px;
+      
+      flex-direction: column; 
+      align-items: center;
+  }
+
+  .stat-item {
+      padding: 20px;
+      width: 80%;
+  }
+
+  header ul {
+      flex-direction: column;
+      gap: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .ship-stats-container {
+      margin-left: 10px;
+      margin-right: 10px;
+      padding: 15px;
+  }
+
+  .mission, .trip {
+      padding: 15px;
+  }
+}
+
+.crew-form-container {
+  margin-top: 20px;
+}
+
+.status-message {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.status-message.error {
+  color: red;
+}
+
+.status-message.success {
+  color: green;
+}
+
+.candidate-item {
+  cursor: pointer;
+  color: blue;
+  text-decoration: underline;
+  margin-bottom: 5px;
+}
+
+.mission-btn {
+  padding: 10px 20px;
+  font-size: 16px;
+}
+
+.hidden {
+  display: none;
+}
+
+#candidates-list {
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  /* прибирає крапки у списку */
+  list-style-type: none;
+  gap: 200px;
+  padding: 0px;
+  margin-top: 20px;
+}
+
+#candidates-container li {
+  text-decoration: none;
+  color: rgb(149, 225, 180);
+}
+
+#candidates-container li:hover {
+  color: white;
+  text-shadow: 0 0 10px #d02a1e;
+}
