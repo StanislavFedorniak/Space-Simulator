@@ -296,11 +296,11 @@ app.use((err, req, res, next) => {
 });
 
 // Static file hosting for frontend
-app.use(express.static(path.join(__dirname, '../client/dist')));
+app.use(express.static(path.join(__dirname, '../client/build')));
 
 // SPA fallback route - send index.html for any unmatched routes
 app.get(/(.*)/, (req, res) => {
-    res.sendFile(path.join(__dirname, '../client/dist/index.html'));
+    res.sendFile(path.join(__dirname, '../client/build/index.html'));
 });
 
 // Start server
