@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { auth } from '../firebase';
-import { signInWithEmailAndPassword } from 'firebase/auth';
 import { useNavigate, Link } from 'react-router-dom';
+import { loginWithBackend } from '../services/jwtAuth';
 
 function Login() {
   const [email, setEmail] = useState('');
@@ -16,7 +15,7 @@ function Login() {
     setLoading(true);
 
     try {
-      await signInWithEmailAndPassword(auth, email, password);
+      await loginWithBackend(email, password);
       navigate('/');
     } catch (error) {
       setError(error.message);

@@ -73,33 +73,30 @@ app.get('/api/missions', async (req, res, next) => {
 
 app.post('/api/missions', authenticateToken, async (req, res, next) => {
     try {
-        const { name, description, startTime } = req.body;
+        const { title, description, startTime } = req.body;
 
         // Validation
-        if (!name) {
+        if (!title || !description || !startTime) {
             return res.status(400).json({
                 success: false,
-                message: 'Mission name is required'
+                message: 'Title, description, and startTime are required'
             });
         }
 
-        // Convert startTime to valid DateTime if provided
-        let missionStartTime = null;
-        if (startTime) {
-            missionStartTime = new Date(startTime);
-            if (isNaN(missionStartTime.getTime())) {
-                return res.status(400).json({
-                    success: false,
-                    message: 'Invalid startTime format. Use ISO-8601 format.'
-                });
-            }
+        const missionStartTime = new Date(startTime);
+        if (isNaN(missionStartTime.getTime())) {
+            return res.status(400).json({
+                success: false,
+                message: 'Invalid startTime format. Use ISO-8601 format.'
+            });
         }
 
         // Create mission
         const mission = await prisma.mission.create({
             data: {
-                name,
-                description: description || null,
+                title,
+                description,
+                startTime: missionStartTime,
                 userId: req.user.id
             },
             include: {
@@ -275,6 +272,14 @@ app.get('/api/auth/profile', authenticateToken, async (req, res, next) => {
     }
 });
 
+app.get('/api/protected', authenticateToken, (req, res) => {
+    res.json({
+        success: true,
+        message: 'Access granted to protected data',
+        user: req.user
+    });
+});
+
 // Global error handling middleware (placed before static file serving)
 app.use((err, req, res, next) => {
     console.error('Error:', err.stack);
@@ -291,11 +296,11 @@ app.use((err, req, res, next) => {
 });
 
 // Static file hosting for frontend
-app.use(express.static('../client/dist'));
+app.use(express.static(path.join(__dirname, '../client/dist')));
 
 // SPA fallback route - send index.html for any unmatched routes
-app.use((req, res) => {
-    res.sendFile(path.resolve(__dirname, '../client/dist/index.html'));
+app.get(/(.*)/, (req, res) => {
+    res.sendFile(path.join(__dirname, '../client/dist/index.html'));
 });
 
 // Start server

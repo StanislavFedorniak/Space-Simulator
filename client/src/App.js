@@ -1,7 +1,6 @@
 import { HashRouter as Router, Routes, Route, Link, Navigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import { auth } from './firebase';
-import { onAuthStateChanged, signOut } from 'firebase/auth';
+import { clearStoredToken } from './services/jwtAuth';
 import Ship from './components/Ship';
 import Missions from './components/Missions';
 import TripLog from './components/TripLog';
@@ -10,34 +9,27 @@ import Login from './components/Login';
 import './App.css';
 
 function App() {
-  const [user, setUser] = useState(null);
+  const [isAuthenticated, setIsAuthenticated] = useState(() => Boolean(localStorage.getItem('token')));
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      console.log('Auth state changed:', currentUser);
-      setUser(currentUser);
-      setLoading(false);
-    });
+    const syncAuthState = () => {
+      setIsAuthenticated(Boolean(localStorage.getItem('token')));
+    };
 
-    // Add timeout to prevent infinite loading
-    const timeout = setTimeout(() => {
-      setLoading(false);
-      console.log('Loading timeout triggered');
-    }, 3000);
+    syncAuthState();
+    setLoading(false);
+
+    window.addEventListener('auth-changed', syncAuthState);
 
     return () => {
-      unsubscribe();
-      clearTimeout(timeout);
+      window.removeEventListener('auth-changed', syncAuthState);
     };
   }, []);
 
   const handleLogout = async () => {
-    try {
-      await signOut(auth);
-    } catch (error) {
-      console.error('Error logging out:', error);
-    }
+    clearStoredToken();
+    setIsAuthenticated(false);
   };
 
   if (loading) {
@@ -52,7 +44,7 @@ function App() {
             <li><Link to="/">Стан корабля</Link></li>
             <li><Link to="/missions">Місії</Link></li>
             <li><Link to="/log">Журнал подорожей</Link></li>
-            {user ? (
+            {isAuthenticated ? (
               <li><button onClick={handleLogout} className="logout-button">Вийти</button></li>
             ) : (
               <li><Link to="/login">Вхід</Link></li>
@@ -65,7 +57,7 @@ function App() {
             <Route path="/missions" element={<Missions />} />
             <Route 
               path="/log" 
-              element={user ? <TripLog /> : <Navigate to="/login" replace />} 
+              element={isAuthenticated ? <TripLog /> : <Navigate to="/login" replace />} 
             />
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />

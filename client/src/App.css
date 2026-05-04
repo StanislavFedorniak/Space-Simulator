@@ -49,6 +49,16 @@ main {
 }
 
 /* Mission component styles */
+.missions {
+  text-align: left;
+  color: #eee;
+}
+
+.missions > h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
 .mission-filters {
   display: flex;
   flex-wrap: wrap;
@@ -114,10 +124,104 @@ main {
 .mission-info h3 {
   margin: 0 0 0.5rem 0;
   color: #0f3460;
+  text-align: left;
 }
 
 .mission-info p {
   margin: 0.25rem 0;
+  text-align: left;
+  color: #d7dbe8;
+}
+
+.mission-card {
+  background-color: #1a1a2e;
+  border: 1px solid #2f3d66;
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.22);
+  margin-bottom: 1rem;
+}
+
+.mission-card .mission-header {
+  margin-bottom: 0;
+}
+
+.mission-form-container {
+  max-width: 760px;
+  margin: 0 auto 2rem;
+  padding: 1.5rem 1.75rem;
+  background: linear-gradient(180deg, #1a1a2e 0%, #16192c 100%);
+  border: 1px solid #2f3d66;
+  border-radius: 14px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.24);
+}
+
+.mission-form-container h3,
+.missions-list h3 {
+  color: #eee;
+  margin-top: 0;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.mission-form-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.mission-form-grid .form-group {
+  gap: 0.45rem;
+}
+
+.mission-form-grid .form-group label {
+  color: #ffb84d;
+  text-align: left;
+}
+
+.mission-form-grid .form-group input,
+.mission-form-grid .form-group textarea {
+  width: 100%;
+  padding: 0.85rem 0.95rem;
+  border: 1px solid #3c4b77;
+  border-radius: 8px;
+  background-color: #121728;
+  color: #f4f7ff;
+  font-size: 1rem;
+  resize: vertical;
+}
+
+.mission-form-grid .form-group input:focus,
+.mission-form-grid .form-group textarea:focus {
+  outline: none;
+  border-color: #83f4f4;
+  box-shadow: 0 0 0 2px rgba(131, 244, 244, 0.16);
+}
+
+.mission-form-actions {
+  display: flex;
+  justify-content: center;
+}
+
+.mission-form-actions .submit-btn {
+  min-width: 220px;
+}
+
+.missions-list {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.missions-list .loading-message,
+.missions-list .error-message,
+.missions-list .no-missions-message {
+  text-align: center;
+}
+
+.mission-card .mission-info p strong {
+  color: #9ad7ff;
 }
 
 .mission-crew {
