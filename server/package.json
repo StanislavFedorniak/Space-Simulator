@@ -1,4 +1,13 @@
 {
+  "name": "space-simulator-server",
+  "version": "1.0.0",
+  "description": "Backend server for Space Simulator application with JWT authentication and PostgreSQL database",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "postinstall": "prisma generate"
+  },
   "dependencies": {
     "@prisma/client": "^5.22.0",
     "bcryptjs": "^3.0.3",
