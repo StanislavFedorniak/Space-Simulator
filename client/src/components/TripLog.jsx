@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const API_BASE_URL = 'http://localhost:5000';
+const API_BASE_URL = '';
 
 const readProtectedRouteError = async (response) => {
   const contentType = response.headers.get('content-type') || '';

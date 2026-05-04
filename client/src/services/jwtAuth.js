@@ -1,6 +1,6 @@
 const TOKEN_KEY = 'token';
 
-const API_BASE_URL = 'http://localhost:5000';
+const API_BASE_URL = '';
 
 const createUsernameFromEmail = (email) => {
   const localPart = email.split('@')[0].toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/^_+|_+$/g, '');
