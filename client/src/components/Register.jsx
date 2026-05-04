@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { auth } from '../firebase';
-import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { useNavigate, Link } from 'react-router-dom';
+import { registerWithBackend } from '../services/jwtAuth';
 
 function Register() {
   const [email, setEmail] = useState('');
@@ -16,7 +15,7 @@ function Register() {
     setLoading(true);
 
     try {
-      await createUserWithEmailAndPassword(auth, email, password);
+      await registerWithBackend(email, password);
       navigate('/');
     } catch (error) {
       setError(error.message);
